@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M. S. Shyam Sunder · Earth & Atmospheric Sciences</title>
+  <meta name="description" content="PhD researcher in Earth and Atmospheric Sciences at NIT Rourkela. Atmosphere–biosphere fluxes, wildfire impacts, remote sensing, machine learning, and quantum computing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <canvas id="atmosphere" aria-hidden="true"></canvas>
+  <div class="orbits" aria-hidden="true">
+    <span class="orbit o1"></span>
+    <span class="orbit o2"></span>
+    <span class="sat"></span>
+  </div>
+  <div class="scroll-progress" aria-hidden="true"><i></i></div>
+
+  <nav class="journey" aria-label="Journey chapters">
+    <a href="#intro" data-chapter="00" class="active"><b></b><span>Origin</span></a>
+    <a href="#about" data-chapter="01"><b></b><span>About</span></a>
+    <a href="#research" data-chapter="02"><b></b><span>Field</span></a>
+    <a href="#education" data-chapter="03"><b></b><span>Path</span></a>
+    <a href="#experience" data-chapter="04"><b></b><span>Labs</span></a>
+    <a href="#publications" data-chapter="05"><b></b><span>Papers</span></a>
+    <a href="#projects" data-chapter="06"><b></b><span>Builds</span></a>
+    <a href="#skills" data-chapter="07"><b></b><span>Toolkit</span></a>
+    <a href="#talks" data-chapter="08"><b></b><span>Stage</span></a>
+    <a href="#contact" data-chapter="09"><b></b><span>Signal</span></a>
+  </nav>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <span class="mark">MS</span>
+        Shyam Sunder
+      </a>
+      <button class="menu-btn" aria-label="Open menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="nav-cta" href="https://scholar.google.com/citations?user=O2puAlYAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" id="intro">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <div class="kicker">Chapter 00 · Origin</div>
+          <h1>Decoding the <span>atmosphere–biosphere</span> nexus.</h1>
+          <p class="lede">
+            I am <strong>M. S. Shyam Sunder</strong>, a PhD researcher in Earth and Atmospheric Sciences
+            at NIT Rourkela. I study how wildfire, drought, and heat reshape land–atmosphere fluxes,
+            then build ML, physics-informed, and quantum methods that turn satellite archives into
+            forecasts people can use.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#publications">Read the work</a>
+            <a class="btn ghost" href="mailto:murushyam@gmail.com">Write to me</a>
+            <a class="btn ghost" href="https://orcid.org/0000-0002-9964-6199" target="_blank" rel="noopener">ORCID</a>
+          </div>
+          <div class="chips">
+            <span class="chip">Wildfire flux dynamics</span>
+            <span class="chip">Remote sensing & GIS</span>
+            <span class="chip">Explainable ML</span>
+            <span class="chip">WRF-Chem</span>
+            <span class="chip">Quantum + AI</span>
+            <span class="chip">SDG-aligned forecasting</span>
+          </div>
+        </div>
+        <aside class="hero-card tilt">
+          <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1400&q=80" alt="Forested escarpment and waterfall landscape representative of eastern Indian forest ecosystems" />
+          <div class="overlay"></div>
+          <div class="hero-meta">
+            <small>Field of work</small>
+            <p>Heterogeneous forest ecosystems — Similipal, Bandhavgarh, Uttarakhand</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="stats reveal">
+        <div class="stat"><b data-count="6" data-suffix="+">0</b><span>years across RS, GIS, atmospheric modelling and AI</span></div>
+        <div class="stat"><b data-count="15">0</b><span>journal, chapter, and in-progress papers</span></div>
+        <div class="stat"><b data-count="3">0</b><span>forest fire regimes decoded in the PhD thesis</span></div>
+        <div class="stat"><b>Best</b><span>presentation, TROPMET 2023</span></div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2><span class="slash">01</span> About</h2>
+            <p>A geoinformatics-trained atmospheric scientist who treats fire weather, carbon pools, and satellite time series as one coupled system.</p>
+          </div>
+        </div>
+        <div class="about-grid">
+          <article class="panel reveal">
+            <h3>What I work on</h3>
+            <p>
+              Forest fires across India have grown more frequent and destructive. My thesis,
+              <em>Decoding Atmosphere–Biosphere Flux Nexus in the Phase of Wildfire using AI Techniques over Heterogeneous Forest Ecosystems</em>,
+              follows three contrasting landscapes — moist deciduous Similipal, dry deciduous Bandhavgarh,
+              and montane forests near Chamba — through pre-fire, active-fire, and recovery windows.
+            </p>
+            <p>
+              I combine microwave and optical remote sensing, flux diagnostics (sensible and latent heat,
+              VPD, soil moisture, AOD), and models that range from WRF-Chem to attention-based deep learning,
+              causal fuzzy time series, and quantum reservoir computing. The through-line is practical:
+              earlier fire-weather warning and a clearer picture of carbon and moisture recovery.
+            </p>
+            <p>
+              Outside the thesis I have worked on PM<sub>2.5</sub> nowcasting with explainable AI,
+              methane during the COVID lockdown, inland water quality with hyperspectral sensors,
+              InSAR subsidence mapping, and quantum algorithms through the Womanium Quantum + AI program.
+            </p>
+            <div class="links-row">
+              <a href="https://github.com/murushyam" target="_blank" rel="noopener">GitHub</a>
+              <a href="https://scholar.google.com/citations?user=O2puAlYAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+              <a href="https://www.researchgate.net/profile/Murugesan-Sellammal-Sunder" target="_blank" rel="noopener">ResearchGate</a>
+              <a href="https://orcid.org/0000-0002-9964-6199" target="_blank" rel="noopener">ORCID 0000-0002-9964-6199</a>
+            </div>
+          </article>
+          <aside class="panel contact-mini reveal delay">
+            <h3>Profile</h3>
+            <p><strong>Name</strong><br />Murugesan Sellammal Shyam Sunder</p>
+            <p><strong>Role</strong><br />PhD, Earth & Atmospheric Sciences, NIT Rourkela</p>
+            <p><strong>Domain</strong><br />Integrated M.Tech, Geoinformatics</p>
+            <p><strong>Email</strong><br /><a href="mailto:murushyam@gmail.com">murushyam@gmail.com</a><br /><a href="mailto:521er1012@nitrkl.ac.in">521er1012@nitrkl.ac.in</a></p>
+            <p><strong>Phone</strong><br /><a href="tel:+919080466904">+91 90804 66904</a></p>
+            <p><strong>Supervisor</strong><br />Dr. Bhishma Tyagi, NIT Rourkela</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2><span class="slash">02</span> Research</h2>
+            <p>Same fire physics, three ecosystems. Magnitude changes with fuel, elevation, and moisture memory.</p>
+          </div>
+        </div>
+        <div class="sites">
+          <article class="site-card reveal" data-site="similipal" tabindex="0">
+            <div class="pad">
+              <div class="kicker">Odisha · open</div>
+              <h3>Similipal Biosphere Reserve</h3>
+              <p>Moist deciduous. 2021 fire: SH +22.4%, LH −33%, VPD to 5.04 kPa. ~47% AGB loss.</p>
+            </div>
+          </article>
+          <article class="site-card reveal delay" data-site="bandhavgarh" tabindex="0">
+            <div class="pad">
+              <div class="kicker">Madhya Pradesh · open</div>
+              <h3>Bandhavgarh Tiger Reserve</h3>
+              <p>Dry deciduous, lower fuel loads. More restrained flux response; soil-moisture coupling still steep.</p>
+            </div>
+          </article>
+          <article class="site-card reveal delay-2" data-site="chamba" tabindex="0">
+            <div class="pad">
+              <div class="kicker">Himalaya · open</div>
+              <h3>Chamba & 2022 Himalayan fires</h3>
+              <p>Montane buffer: SH +42.9%, milder LH drop. 2022 UK fires: 16.75% biomass loss, uneven recovery.</p>
+            </div>
+          </article>
+        </div>
+        <div class="site-detail" id="site-detail" hidden>
+          <button type="button" class="close-detail">Close field note</button>
+          <h3></h3>
+          <p></p>
+        </div>
+        <div class="thesis">
+          <article class="panel">
+            <h3>Thesis question</h3>
+            <p>
+              How do wildfire-driven shifts in energy, moisture, and carbon pools differ across
+              heterogeneous Indian forests — and can hybrid ML / physics-informed / quantum models
+              forecast fire weather and burnt area at 1–30 day horizons well enough to serve SDG-aligned
+              early warning?
+            </p>
+            <p>
+              Forecasting stack: <strong>PACI-ICPDA</strong>, a seven-phase pipeline of classical baselines,
+              variational mode decomposition, causal models, LSTM-attention hybrids, and adaptive XGBoost
+              meta-stacking for fire weather, fire counts, and burnt area.
+            </p>
+          </article>
+          <aside class="findings">
+            <div class="find"><b>Land–air coupling</b><span>Soil moisture is the critical amplifier of surface heating after fire.</span></div>
+            <div class="find"><b>Aerosols & air quality</b><span>AOD more than tripled over Similipal fire pixels in 2021.</span></div>
+            <div class="find"><b>Resilience</b><span>Uttarakhand 2022: 40.85% post-fire recovery and a net biomass gain after monsoon recharge.</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="wrap">
+        <div class="section-head"><div><h2><span class="slash">03</span> Education</h2></div></div>
+        <div class="timeline">
+          <article class="item">
+            <div class="when">Aug 2021 — present</div>
+            <div>
+              <h3>PhD, Earth and Atmospheric Sciences</h3>
+              <div class="org">National Institute of Technology Rourkela</div>
+              <p>Thesis on atmosphere–biosphere fluxes under wildfire using AI over heterogeneous forest ecosystems. Roll no. 521ER1012.</p>
+            </div>
+          </article>
+          <article class="item">
+            <div class="when">2014 — Jul 2019</div>
+            <div>
+              <h3>Integrated M.Tech, Geoinformatics · CGPA 7.59 / 10</h3>
+              <div class="org">Central University of Jharkhand, Ranchi</div>
+              <p>M.Tech dissertation at IIST on inland water quality of Vembanad Lake using Headwall t-HSI, AVIRIS-NG and Sentinel-2. B.Tech thesis on object-based hyperspectral LU/LC and forest species mapping in Madhya Pradesh.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2><span class="slash">04</span> Experience</h2>
+            <p>Labs, consultancies, and field campaigns from microwave InSAR to climate-model workflows.</p>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="item">
+            <div class="when">Mar 2020 — Aug 2021</div>
+            <div>
+              <h3>Junior Researcher</h3>
+              <div class="org">GeoSensing & Imaging Consultancy (GeoSI), Thiruvananthapuram</div>
+              <p>Remote sensing and GIS analysis with statistics, atmospheric and climate models, and ML/DL pipelines. Python, R, TensorFlow, Keras, WRF.</p>
+            </div>
+          </article>
+          <article class="item">
+            <div class="when">Aug 2019 — Feb 2020</div>
+            <div>
+              <h3>Project Associate</h3>
+              <div class="org">IIT Madras · Department of Ocean Engineering · ONGC</div>
+              <p>Subsidence study over ONGC’s onshore Ramanathapuram PML block using microwave remote sensing / InSAR. SNAP, Python, R, ArcGIS, QGIS, Trimble RTK/DGPS.</p>
+            </div>
+          </article>
+          <article class="item">
+            <div class="when">2017 · 1 year</div>
+            <div>
+              <h3>DST project associate (internship)</h3>
+              <div class="org">Central University of Jharkhand · YSS/2015/000801</div>
+              <p>Linked agricultural biotic and abiotic hierarchies to climate using GIMMS NDVI3g, MODIS and CRU. Seasonal Rabi/Kharif vegetation variance in R.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2><span class="slash">05</span> Publications</h2>
+            <p>Selected peer-reviewed work first, then chapters, communications, and manuscripts in motion.</p>
+          </div>
+        </div>
+        <div class="filters" role="tablist">
+          <button class="filter on" data-filter="all">All</button>
+          <button class="filter" data-filter="journal">Journals</button>
+          <button class="filter" data-filter="chapter">Chapters</button>
+          <button class="filter" data-filter="pipeline">In pipeline</button>
+        </div>
+        <div class="pub-list">
+          <article class="pub reveal" data-kind="journal">
+            <div class="meta"><span class="tag live">Journal · 2025</span><span class="tag">Physics and Chemistry of the Earth</span></div>
+            <h3>Impacts of wildfire over land and atmosphere in Similipal Biosphere Reserve, Odisha, India</h3>
+            <p>Sunder, M.S.S., Kumar, M., Tyagi, B. DOI: <a href="https://doi.org/10.1016/j.pce.2025.104177" target="_blank" rel="noopener">10.1016/j.pce.2025.104177</a></p>
+          </article>
+          <article class="pub reveal" data-kind="journal">
+            <div class="meta"><span class="tag live">Journal · 2025</span><span class="tag">Mausam 76(4)</span></div>
+            <h3>From flames to recovery: ecosystem resilience in Uttarakhand’s 2022 forest fires</h3>
+            <p>Sunder, M.S., Mahto, S.S., Tyagi, B. pp. 1095–1112.</p>
+          </article>
+          <article class="pub reveal" data-kind="journal">
+            <div class="meta"><span class="tag live">Journal · 2023</span><span class="tag">AI (MDPI) · 17 citations</span></div>
+            <h3>Unveiling the transparency of prediction models for spatial PM<sub>2.5</sub> over Singapore</h3>
+            <p>Sunder, M.S.S., Tikkiwal, V.A., Kumar, A., Tyagi, B. <em>AI</em> 4(4), 787–811.</p>
+          </article>
+          <article class="pub reveal" data-kind="journal">
+            <div class="meta"><span class="tag live">Journal · 2023/24</span><span class="tag">Acta Geophysica · 13 citations</span></div>
+            <h3>Seasonal analysis of long-term (1970–2020) rainfall variability in the Mahi River Basin, India</h3>
+            <p>Sharma, A., Sharma, D., Panda, S.K., Sunder, M.S.S., Kumar Dubey, S.</p>
+          </article>
+          <article class="pub reveal" data-kind="journal">
+            <div class="meta"><span class="tag live">Journal · 2022</span><span class="tag">AAQR · 7 citations</span></div>
+            <h3>Then and Now: COVID-19 pandemic lockdown misfire atmospheric methane over India</h3>
+            <p>Hari, M., Sahu, R.K., Sunder, M.S., Tyagi, B. DOI: <a href="https://doi.org/10.4209/aaqr.210354" target="_blank" rel="noopener">10.4209/aaqr.210354</a></p>
+          </article>
+          <article class="pub reveal" data-kind="chapter">
+            <div class="meta"><span class="tag live">Book chapter · 2024</span><span class="tag">Springer</span></div>
+            <h3>Aerosol variability over Nigeria with a focus on changes after the COVID-19 episode</h3>
+            <p>Sunder, S.M.S., Tharun, D., Sahu, R.K., Tyagi, B.</p>
+          </article>
+          <article class="pub reveal" data-kind="pipeline">
+            <div class="meta"><span class="tag comm">Communicated / in prep</span></div>
+            <h3>Active manuscripts</h3>
+            <p>PACI-ICPDA extreme wildfire forecasting; LSTM + quantum reservoir fire-weather models; physics-guided thunderstorm prediction; fire-driven carbon-pool recovery; South Asian High / ISMR explainable ML.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head"><div><h2><span class="slash">06</span> Projects</h2></div></div>
+        <div class="tiles">
+          <article class="tile"><div><div class="kicker">2024 · Womanium</div><h3>Classically verifiable quantum advantage from a computational Bell test</h3><p>Quantum algorithm development with Classiq, cryptography, and hardware simulation.</p></div></article>
+          <article class="tile"><div><div class="kicker">2024</div><h3>Automatic satellite image description over forest-fire zones</h3><p>California fire-event dataset plus image-processing and RAG / LLM pipelines.</p></div></article>
+          <article class="tile"><div><div class="kicker">2018–2019 · IIST</div><h3>Vembanad Lake water quality from hyperspectral RS</h3><p>CDOM, Chl-a, TSS and phosphate retrieval on Headwall t-HSI, AVIRIS-NG and Sentinel-2.</p></div></article>
+          <article class="tile"><div><div class="kicker">2018 · CUJ</div><h3>Hyperspectral forest cover and species mapping</h3><p>Object-based image analysis for LU/LC and species classification over Madhya Pradesh.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head"><div><h2><span class="slash">07</span> Skills</h2></div></div>
+        <div class="skill-grid">
+          <article class="panel skill-box"><h3>Languages</h3><div class="pills"><span class="pill">Python</span><span class="pill">R</span><span class="pill">Julia</span><span class="pill">Fortran</span><span class="pill">MATLAB</span><span class="pill">JavaScript</span></div></article>
+          <article class="panel skill-box"><h3>Models & ML</h3><div class="pills"><span class="pill">WRF-Chem</span><span class="pill">PyTorch</span><span class="pill">TensorFlow / Keras</span><span class="pill">XAI / SHAP</span><span class="pill">GEE</span><span class="pill">Classiq / PennyLane / Qiskit</span></div></article>
+          <article class="panel skill-box"><h3>Geospatial stack</h3><div class="pills"><span class="pill">GDAL</span><span class="pill">QGIS / ArcGIS Pro</span><span class="pill">ENVI / ERDAS</span><span class="pill">SNAP / SeaDAS</span><span class="pill">eCognition</span><span class="pill">PostGIS</span></div></article>
+          <article class="panel skill-box"><h3>Field & instruments</h3><div class="pills"><span class="pill">Trimble RTK / DGPS</span><span class="pill">FARO Focus S 350 TLS</span><span class="pill">TDR soil moisture</span><span class="pill">Chlorophyll meter</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="talks">
+      <div class="wrap">
+        <div class="section-head"><div><h2><span class="slash">08</span> Talks, schools, certificates</h2></div></div>
+        <div class="two-col">
+          <div>
+            <h3 style="font-family:var(--serif);margin-top:0">Conferences</h3>
+            <ul class="list">
+              <li class="award"><strong>Best presentation · TROPMET 2023, Jaipur.</strong> Meteorological fluxes and AOD during the 2021 Similipal fires.</li>
+              <li>AGU 2024 — Wildfire-induced energy-flux changes, Similipal.</li>
+              <li>TROPMET 2024, Rourkela — Heat-wave and drought nexus, Uttarakhand 2022 fires.</li>
+              <li>ONCE-2026, NIT Rourkela — PACI-ICPDA extreme forest-fire forecasting.</li>
+              <li>IICAQM-2022, IIT Madras — Radiation balance during a northern India dust storm.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-family:var(--serif);margin-top:0">Training</h3>
+            <ul class="list">
+              <li>NSF AI2ES / NCAR TAI4ES summer school, 2022</li>
+              <li>4th Joint ECMWF / ESA / EUMETSAT School on Atmospheric Composition, 2022</li>
+              <li>IEEE GRSS IADF School on Computer Vision for Earth Observation, 2022</li>
+              <li>Womanium / QWorld / Classiq / PennyLane / Qiskit quantum track, 2024</li>
+              <li>Fundamentals of Quantum Computing, NIT Rourkela, Jan 2024</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <div class="contact-card">
+          <div class="kicker">Chapter 09 · Signal</div>
+          <h2>Collaborations, postdocs, and fire–atmosphere problems.</h2>
+          <p class="lede">
+            I am looking for groups that couple satellite Earth observation with atmospheric modelling,
+            explainable ML, and early-warning systems. Happy to talk about data, methods, or a visit.
+          </p>
+          <div class="contact-actions">
+            <a class="btn primary" href="mailto:murushyam@gmail.com">murushyam@gmail.com</a>
+            <a class="btn ghost" href="mailto:521er1012@nitrkl.ac.in">NITRKL mail</a>
+            <a class="btn ghost" href="https://github.com/murushyam" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <p style="margin-top:28px;color:#cbd5e1;max-width:70ch">
+            References available on request: Dr. Bhishma Tyagi (NIT Rourkela);
+            Dr. Rajiv Krishnakumar (Quantum Basel / University of Basel);
+            Prof. Amit Kumar (BHU);
+            Dr. Sundarabalan V. Balasubramanian (GeoSI);
+            Dr. Bikash Ranjan Parida (CUJ).
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© 2026 M. S. Shyam Sunder · Earth & Atmospheric Sciences</div>
+      <div>Built as a research portfolio · NIT Rourkela</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
