@@ -1,5 +1,13 @@
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+(() => {
+  if (document.querySelector('link[href*="overrides.css"]')) return;
+  const css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = "css/overrides.css";
+  document.head.appendChild(css);
+})();
+
 const btn = document.querySelector(".menu-btn");
 const links = document.querySelector(".nav-links");
 if (btn && links) {
@@ -66,6 +74,12 @@ const revealIo = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal-on").forEach((el) => revealIo.observe(el));
 
+document.querySelectorAll("[data-count]").forEach((el) => {
+  const end = Number(el.dataset.count);
+  const suffix = el.dataset.suffix || "";
+  el.textContent = `${end}${suffix}`;
+});
+
 let counted = false;
 const countIo = new IntersectionObserver((entries) => {
   if (!entries.some((e) => e.isIntersecting) || counted) return;
@@ -73,16 +87,19 @@ const countIo = new IntersectionObserver((entries) => {
   document.querySelectorAll("[data-count]").forEach((el) => {
     const end = Number(el.dataset.count);
     const suffix = el.dataset.suffix || "";
+    if (reduced) {
+      el.textContent = `${end}${suffix}`;
+      return;
+    }
     const start = performance.now();
-    const dur = 1100;
+    const dur = 900;
     const tick = (now) => {
       const t = Math.min(1, (now - start) / dur);
       const eased = 1 - Math.pow(1 - t, 3);
       el.textContent = `${Math.round(end * eased)}${suffix}`;
       if (t < 1) requestAnimationFrame(tick);
     };
-    if (reduced) el.textContent = `${end}${suffix}`;
-    else requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
   });
 });
 const stats = document.querySelector(".stats");
@@ -138,7 +155,7 @@ document.querySelector(".close-detail")?.addEventListener("click", () => {
 });
 
 const tiltCard = document.querySelector(".hero-card.tilt");
-if (tiltCard && !reduced) {
+if (tiltCard && !reduced && window.matchMedia("(hover: hover)").matches) {
   tiltCard.addEventListener("mousemove", (e) => {
     const r = tiltCard.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width - 0.5;
@@ -163,7 +180,7 @@ if (tiltCard && !reduced) {
   const resize = () => {
     w = canvas.width = window.innerWidth;
     h = canvas.height = window.innerHeight;
-    const n = Math.min(140, Math.floor((w * h) / 14000));
+    const n = Math.min(90, Math.floor((w * h) / 18000));
     particles = Array.from({ length: n }, () => spawn());
   };
 
@@ -189,33 +206,17 @@ if (tiltCard && !reduced) {
   const draw = () => {
     ctx.clearRect(0, 0, w, h);
     wind = Math.sin(performance.now() / 2400) * 0.25;
-
-    ctx.strokeStyle = "rgba(125,211,252,0.05)";
-    ctx.lineWidth = 1;
-    for (let i = 0; i < 6; i += 1) {
-      const y = ((performance.now() / 40 + i * 90) % (h + 80)) - 40;
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      for (let x = 0; x <= w; x += 40) {
-        ctx.lineTo(x, y + Math.sin(x / 90 + i) * 10);
-      }
-      ctx.stroke();
-    }
-
     particles.forEach((p) => {
       p.x += p.vx + wind;
       p.y += p.vy;
       if (p.x > w + 10) p.x = -10;
       if (p.y < -10) Object.assign(p, spawn(h + 8));
       ctx.beginPath();
-      ctx.fillStyle = p.ember
-        ? `rgba(255,107,53,${p.a})`
-        : `rgba(125,211,252,${p.a})`;
+      ctx.fillStyle = p.ember ? `rgba(255,107,53,${p.a})` : `rgba(125,211,252,${p.a})`;
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fill();
     });
-
-    if (Math.random() < 0.04 && sparks.length < 24) sparks.push(spark());
+    if (Math.random() < 0.03 && sparks.length < 16) sparks.push(spark());
     sparks = sparks.filter((s) => s.life > 0);
     sparks.forEach((s) => {
       s.x += s.vx + wind * 0.4;
@@ -226,7 +227,6 @@ if (tiltCard && !reduced) {
       ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
       ctx.fill();
     });
-
     requestAnimationFrame(draw);
   };
 
