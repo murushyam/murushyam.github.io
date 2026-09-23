@@ -7,11 +7,13 @@ const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     css.href = "css/overrides.css";
     document.head.appendChild(css);
   }
-  if (!document.querySelector('script[src*="scene3d.js"]')) {
-    const s = document.createElement("script");
-    s.src = "js/scene3d.js";
-    document.body.appendChild(s);
-  }
+  ["js/scene3d.js", "js/forest.js"].forEach((src) => {
+    if (!document.querySelector(`script[src*="${src.split("/").pop()}"]`)) {
+      const s = document.createElement("script");
+      s.src = src;
+      document.body.appendChild(s);
+    }
+  });
 })();
 
 const btn = document.querySelector(".menu-btn");
