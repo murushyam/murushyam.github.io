@@ -1,61 +1,8 @@
 html { scroll-behavior: smooth; }
-body {
-  overflow-x: hidden;
-  --dry: 0;
-  --fire: 0;
-  --smoke: 0;
-}
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(900px 480px at 80% -10%, rgba(52,211,153, calc(.08 * (1 - var(--dry)))), transparent 55%),
-    radial-gradient(800px 420px at 10% 0%, rgba(255,159,28, calc(.10 * var(--dry))), transparent 50%),
-    radial-gradient(700px 380px at 70% 20%, rgba(255,107,53, calc(.14 * var(--fire))), transparent 55%);
-}
-#world3d, .orbits { display: none !important; }
-#atmosphere, .bg-grid { z-index: -1; }
-main, .nav, .journey, footer { position: relative; z-index: 4; }
-
-#forest-journey {
-  position: fixed;
-  inset: auto 0 0 0;
-  height: 38vh;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-#forest-journey .layer {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: .55;
-}
-#forest-journey .trunk { fill: #3d2a1c; }
-#forest-journey .leaf {
-  fill: rgb(
-    calc(40 + 110 * var(--dry) + 30 * var(--fire)),
-    calc(118 - 80 * var(--dry) - 36 * var(--fire)),
-    calc(64 - 40 * var(--dry) - 16 * var(--fire))
-  );
-}
-#forest-journey .fire { opacity: var(--fire); }
-#forest-journey .lick { fill: #ff6b35; }
-#forest-journey .plume { opacity: var(--smoke); }
-#forest-journey .plume ellipse { fill: rgba(30,28,26,.22); }
-#forest-journey .stage-label {
-  position: absolute;
-  left: 16px;
-  bottom: 10px;
-  font: 700 0.64rem/1 Outfit, sans-serif;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: #93a4bd;
-}
+body { overflow-x: hidden; }
+#world3d, #forest-journey, .orbits { display: none !important; }
+#atmosphere, .bg-grid { z-index: 0; }
+main, .nav, .journey, footer { position: relative; z-index: 2; }
 
 .hero, section[id] {
   min-height: auto;
@@ -105,5 +52,4 @@ main, .nav, .journey, footer { position: relative; z-index: 4; }
     grid-template-columns: 1fr !important;
   }
   .stats { grid-template-columns: 1fr 1fr !important; }
-  #forest-journey { height: 22vh; opacity: .4; }
 }
