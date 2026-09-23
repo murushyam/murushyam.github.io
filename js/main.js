@@ -7,13 +7,12 @@ const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     css.href = "css/overrides.css";
     document.head.appendChild(css);
   }
-  ["js/scene3d.js", "js/forest.js"].forEach((src) => {
-    if (!document.querySelector(`script[src*="${src.split("/").pop()}"]`)) {
-      const s = document.createElement("script");
-      s.src = src;
-      document.body.appendChild(s);
-    }
-  });
+  document.getElementById("world3d")?.remove();
+  if (!document.querySelector('script[src*="forest.js"]')) {
+    const s = document.createElement("script");
+    s.src = "js/forest.js";
+    document.body.appendChild(s);
+  }
 })();
 
 const btn = document.querySelector(".menu-btn");
