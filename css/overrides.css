@@ -15,6 +15,50 @@ body { overflow-x: hidden; }
 #atmosphere, .bg-grid, .orbits { z-index: -1; }
 main, .nav, .journey, footer { position: relative; z-index: 2; }
 
+#forest-journey {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: min(58vh, 560px);
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 100%);
+}
+#forest-journey .layer {
+  position: absolute;
+  inset: 0;
+  width: 140%;
+  height: 100%;
+  will-change: transform;
+}
+#forest-journey .far { opacity: .45; }
+#forest-journey .mid { opacity: .7; }
+#forest-journey .near { opacity: .95; }
+#forest-journey .trail {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  filter: drop-shadow(0 0 6px rgba(255,159,28,.45));
+}
+#forest-journey .lick {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: flicker 1.15s ease-in-out infinite alternate;
+}
+#forest-journey .flame:nth-child(odd) .lick { animation-duration: .9s; }
+#forest-journey .smoke {
+  position: absolute;
+  inset: auto 0 18% 0;
+  height: 40%;
+  background: radial-gradient(ellipse at 30% 80%, rgba(255,107,53, calc(var(--fire, .4) * .18)), transparent 55%),
+              radial-gradient(ellipse at 70% 90%, rgba(15,10,6,.35), transparent 60%);
+}
+@keyframes flicker {
+  from { transform: scaleY(.82) scaleX(.92) rotate(-3deg); opacity: .75; }
+  to { transform: scaleY(1.12) scaleX(1.05) rotate(4deg); opacity: 1; }
+}
+
 .hero, section[id] {
   scroll-snap-align: start;
   min-height: 100vh;
@@ -22,7 +66,7 @@ main, .nav, .journey, footer { position: relative; z-index: 2; }
   flex-direction: column;
   justify-content: center;
   padding-top: 88px;
-  padding-bottom: 48px;
+  padding-bottom: 140px;
 }
 .wrap { width: min(1180px, calc(100% - 96px)); }
 .nav-links { gap: 16px; font-size: 0.86rem; }
@@ -71,13 +115,15 @@ main, .nav, .journey, footer { position: relative; z-index: 2; }
   .nav-links.open li { display: block !important; }
   .menu-btn { display: grid !important; place-items: center; }
   h1 { font-size: clamp(2.05rem, 11vw, 3.1rem) !important; }
-  .hero, section[id] { min-height: 100svh; justify-content: flex-start; }
+  .hero, section[id] { min-height: 100svh; justify-content: flex-start; padding-bottom: 120px; }
   .hero-grid, .about-grid, .thesis, .item, .tiles, .skill-grid, .sites, .two-col, .stats {
     grid-template-columns: 1fr !important;
   }
   .stats { grid-template-columns: 1fr 1fr !important; }
+  #forest-journey { height: 38vh; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-snap-type: none; }
   #world3d { display: none; }
+  #forest-journey .lick { animation: none; }
 }
