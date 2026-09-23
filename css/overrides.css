@@ -1,14 +1,22 @@
-/* Cinematic Short structure: one full-screen chapter per scroll */
-html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
-}
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
 body { overflow-x: hidden; }
 
-.hero,
-section[id] {
+#world3d {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+#world3d canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+#atmosphere, .bg-grid, .orbits { z-index: -1; }
+main, .nav, .journey, footer { position: relative; z-index: 2; }
+
+.hero, section[id] {
   scroll-snap-align: start;
-  scroll-snap-stop: always;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,27 +24,19 @@ section[id] {
   padding-top: 88px;
   padding-bottom: 48px;
 }
-
-.hero { padding-top: 96px; }
-
 .wrap { width: min(1180px, calc(100% - 96px)); }
 .nav-links { gap: 16px; font-size: 0.86rem; }
-
-.stats {
-  width: min(1180px, calc(100% - 96px));
-  margin: -12px auto 0;
+.hero-card, .site-card, .tile, .panel {
+  transition: transform 0.18s ease, border-color 0.25s ease;
+  will-change: transform;
 }
-.stat { min-height: 110px; }
-.stat span { display: block; margin-top: 6px; line-height: 1.35; }
-
 .site-card { min-height: 250px; }
 .site-card .pad {
   inset: auto 0 0 0 !important;
   padding: 56px 18px 18px;
   background: linear-gradient(180deg, transparent, rgba(7,11,20,.82));
 }
-
-.journey { right: 12px; width: 14px; }
+.journey { right: 12px; width: 14px; z-index: 35; }
 .journey span {
   position: absolute;
   right: 22px;
@@ -47,19 +47,6 @@ section[id] {
   padding: 2px 8px;
 }
 
-.scroll-hint {
-  position: fixed;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 30;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #93a4bd;
-  pointer-events: none;
-}
-
 @media (max-width: 1200px) {
   .nav-links li:nth-child(3),
   .nav-links li:nth-child(6),
@@ -67,8 +54,7 @@ section[id] {
 }
 @media (max-width: 1100px) {
   .journey { display: none !important; }
-  .wrap, .stats { width: min(1180px, calc(100% - 40px)); }
-  html { scroll-snap-type: y proximity; }
+  .wrap { width: min(1180px, calc(100% - 40px)); }
 }
 @media (max-width: 900px) {
   .journey, .orbits { display: none !important; }
@@ -85,18 +71,13 @@ section[id] {
   .nav-links.open li { display: block !important; }
   .menu-btn { display: grid !important; place-items: center; }
   h1 { font-size: clamp(2.05rem, 11vw, 3.1rem) !important; }
-  .hero, section[id] {
-    min-height: 100svh;
-    justify-content: flex-start;
-    padding-top: 88px;
-  }
-  .hero-card, .hero-card img { min-height: 220px; }
-  .stats { grid-template-columns: 1fr 1fr !important; }
-  .hero-grid, .about-grid, .thesis, .item, .tiles, .skill-grid, .sites, .two-col {
+  .hero, section[id] { min-height: 100svh; justify-content: flex-start; }
+  .hero-grid, .about-grid, .thesis, .item, .tiles, .skill-grid, .sites, .two-col, .stats {
     grid-template-columns: 1fr !important;
   }
+  .stats { grid-template-columns: 1fr 1fr !important; }
 }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-snap-type: none; }
+  #world3d { display: none; }
 }
