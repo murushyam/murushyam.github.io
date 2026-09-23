@@ -1,11 +1,17 @@
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 (() => {
-  if (document.querySelector('link[href*="overrides.css"]')) return;
-  const css = document.createElement("link");
-  css.rel = "stylesheet";
-  css.href = "css/overrides.css";
-  document.head.appendChild(css);
+  if (!document.querySelector('link[href*="overrides.css"]')) {
+    const css = document.createElement("link");
+    css.rel = "stylesheet";
+    css.href = "css/overrides.css";
+    document.head.appendChild(css);
+  }
+  if (!document.querySelector('script[src*="scene3d.js"]')) {
+    const s = document.createElement("script");
+    s.src = "js/scene3d.js";
+    document.body.appendChild(s);
+  }
 })();
 
 const btn = document.querySelector(".menu-btn");
@@ -154,83 +160,16 @@ document.querySelector(".close-detail")?.addEventListener("click", () => {
   if (detail) detail.hidden = true;
 });
 
-const tiltCard = document.querySelector(".hero-card.tilt");
-if (tiltCard && !reduced && window.matchMedia("(hover: hover)").matches) {
-  tiltCard.addEventListener("mousemove", (e) => {
-    const r = tiltCard.getBoundingClientRect();
+document.querySelectorAll(".hero-card, .site-card, .tile, .panel").forEach((card) => {
+  if (reduced || !window.matchMedia("(hover: hover)").matches) return;
+  card.style.transformStyle = "preserve-3d";
+  card.addEventListener("mousemove", (e) => {
+    const r = card.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width - 0.5;
     const y = (e.clientY - r.top) / r.height - 0.5;
-    tiltCard.style.transform = `rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
+    card.style.transform = `perspective(900px) rotateY(${x * 10}deg) rotateX(${-y * 8}deg) translateZ(8px)`;
   });
-  tiltCard.addEventListener("mouseleave", () => {
-    tiltCard.style.transform = "none";
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "none";
   });
-}
-
-(function atmosphere() {
-  const canvas = document.getElementById("atmosphere");
-  if (!canvas || reduced) return;
-  const ctx = canvas.getContext("2d");
-  let w = 0;
-  let h = 0;
-  let particles = [];
-  let sparks = [];
-  let wind = 0;
-
-  const resize = () => {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-    const n = Math.min(90, Math.floor((w * h) / 18000));
-    particles = Array.from({ length: n }, () => spawn());
-  };
-
-  const spawn = (y) => ({
-    x: Math.random() * w,
-    y: y == null ? Math.random() * h : y,
-    r: Math.random() * 1.8 + 0.3,
-    vx: Math.random() * 0.25 + 0.05,
-    vy: Math.random() * -0.18 - 0.02,
-    a: Math.random() * 0.35 + 0.08,
-    ember: Math.random() > 0.78
-  });
-
-  const spark = () => ({
-    x: Math.random() * w * 0.5 + w * 0.25,
-    y: h + 10,
-    vx: (Math.random() - 0.5) * 0.6,
-    vy: -Math.random() * 1.6 - 0.4,
-    life: 1,
-    r: Math.random() * 1.6 + 0.6
-  });
-
-  const draw = () => {
-    ctx.clearRect(0, 0, w, h);
-    wind = Math.sin(performance.now() / 2400) * 0.25;
-    particles.forEach((p) => {
-      p.x += p.vx + wind;
-      p.y += p.vy;
-      if (p.x > w + 10) p.x = -10;
-      if (p.y < -10) Object.assign(p, spawn(h + 8));
-      ctx.beginPath();
-      ctx.fillStyle = p.ember ? `rgba(255,107,53,${p.a})` : `rgba(125,211,252,${p.a})`;
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
-    });
-    if (Math.random() < 0.03 && sparks.length < 16) sparks.push(spark());
-    sparks = sparks.filter((s) => s.life > 0);
-    sparks.forEach((s) => {
-      s.x += s.vx + wind * 0.4;
-      s.y += s.vy;
-      s.life -= 0.008;
-      ctx.beginPath();
-      ctx.fillStyle = `rgba(255,159,28,${Math.max(0, s.life) * 0.7})`;
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fill();
-    });
-    requestAnimationFrame(draw);
-  };
-
-  window.addEventListener("resize", resize);
-  resize();
-  draw();
-})();
+});
