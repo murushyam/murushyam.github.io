@@ -8,11 +8,7 @@ const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.head.appendChild(css);
   }
   document.getElementById("world3d")?.remove();
-  if (!document.querySelector('script[src*="forest.js"]')) {
-    const s = document.createElement("script");
-    s.src = "js/forest.js";
-    document.body.appendChild(s);
-  }
+  document.getElementById("forest-journey")?.remove();
 })();
 
 const btn = document.querySelector(".menu-btn");
