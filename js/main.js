@@ -261,6 +261,13 @@
   booktitle={Atmospheric Chemistry and Aerosol Dynamics},
   publisher={Springer},
   year={2024}
+}`,
+    zenodo2026: `@article{sunder2026southasianhigh,
+  title={Explainable AI and Optimization-Based Machine Learning Insights into the Influence of South Asian High Variability in Indian Summer Monsoon Rainfall},
+  author={Sunder, M. S. Shyam and Tyagi, Bhishma},
+  journal={CERN Zenodo},
+  year={2026},
+  doi={10.5281/zenodo.20730887}
 }`
   };
 

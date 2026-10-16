@@ -133,6 +133,12 @@
       </ul>
 
       <div class="nav-controls">
+        <!-- Live Academic Web Scraper Trigger Button -->
+        <button class="btn-live-sync" id="btn-trigger-scrape" title="Sync live scholarly records from ORCID and OpenAlex">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          <span id="live-sync-indicator">Live Sync</span>
+        </button>
+
         <!-- Ambient Atmosphere Audio Synthesizer Toggle -->
         <button class="audio-toggle-btn" id="audio-toggle" title="Toggle Ambient Atmosphere Audio Synthesizer" aria-label="Toggle Atmosphere Audio">
           <div class="sound-waves" aria-hidden="true">
@@ -594,19 +600,43 @@
 
         <div class="pub-toolbar">
           <div class="pub-filters" role="tablist">
-            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Works (7)</button>
-            <button class="filter-btn" data-filter="journal" role="tab" aria-selected="false">Journals (5)</button>
+            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Works (9)</button>
+            <button class="filter-btn" data-filter="journal" role="tab" aria-selected="false">Journals (6)</button>
             <button class="filter-btn" data-filter="chapter" role="tab" aria-selected="false">Book Chapters (1)</button>
-            <button class="filter-btn" data-filter="pipeline" role="tab" aria-selected="false">In Pipeline (1)</button>
+            <button class="filter-btn" data-filter="pipeline" role="tab" aria-selected="false">In Pipeline (2)</button>
           </div>
 
-          <div class="pub-search-box">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <input type="text" id="pub-search" class="pub-search-input" placeholder="Search papers, authors, DOI, keywords..." aria-label="Search publications" />
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <button class="btn-live-sync" title="Sync live publications and citations from OpenAlex & ORCID">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+              Auto-Sync Citations
+            </button>
+            <div class="pub-search-box">
+              <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="pub-search" class="pub-search-input" placeholder="Search papers, authors, DOI, keywords..." aria-label="Search publications" />
+            </div>
           </div>
         </div>
 
         <div class="pub-list">
+          <!-- Paper 0 (New 2026) -->
+          <article class="pub-item" data-kind="journal">
+            <div class="pub-top-meta">
+              <span class="pub-badge hot">Research Article · 2026</span>
+              <span class="pub-badge">CERN Zenodo Repository</span>
+              <span class="pub-badge">South Asian High & ISMR</span>
+            </div>
+            <h3 class="pub-title">Explainable AI and Optimization-Based Machine Learning Insights into the Influence of South Asian High Variability in Indian Summer Monsoon Rainfall</h3>
+            <p class="pub-authors"><strong>M. S. Shyam Sunder</strong>, Bhishma Tyagi, et al.</p>
+            <div class="pub-actions">
+              <a class="pub-action-btn" href="https://doi.org/10.5281/zenodo.20730887" target="_blank" rel="noopener">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                DOI: 10.5281/zenodo.20730887
+              </a>
+              <button class="pub-action-btn btn-bibtex" data-key="zenodo2026">Copy BibTeX</button>
+            </div>
+          </article>
+
           <!-- Paper 1 -->
           <article class="pub-item" data-kind="journal">
             <div class="pub-top-meta">
@@ -635,6 +665,10 @@
             <h3 class="pub-title">From flames to recovery: ecosystem resilience in Uttarakhand’s 2022 forest fires</h3>
             <p class="pub-authors"><strong>M. S. Shyam Sunder</strong>, S. S. Mahto, Bhishma Tyagi (pp. 1095–1112)</p>
             <div class="pub-actions">
+              <a class="pub-action-btn" href="https://doi.org/10.54302/mausam.v76i4.7086" target="_blank" rel="noopener">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                DOI: 10.54302/mausam.v76i4.7086
+              </a>
               <button class="pub-action-btn btn-bibtex" data-key="mausam2025">Copy BibTeX</button>
             </div>
           </article>
@@ -667,6 +701,10 @@
             <h3 class="pub-title">Seasonal analysis of long-term (1970–2020) rainfall variability in the Mahi River Basin, India</h3>
             <p class="pub-authors">A. Sharma, D. Sharma, S. K. Panda, <strong>M. S. Shyam Sunder</strong>, S. Kumar Dubey</p>
             <div class="pub-actions">
+              <a class="pub-action-btn" href="https://doi.org/10.1007/s11600-023-01094-5" target="_blank" rel="noopener">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                DOI: 10.1007/s11600-023-01094-5
+              </a>
               <button class="pub-action-btn btn-bibtex" data-key="acta2024">Copy BibTeX</button>
             </div>
           </article>
@@ -702,6 +740,22 @@
             </div>
           </article>
 
+          <!-- Paper 7 (EGU 2024) -->
+          <article class="pub-item" data-kind="pipeline">
+            <div class="pub-top-meta">
+              <span class="pub-badge">EGU General Assembly · 2024</span>
+              <span class="pub-badge">EGUsphere</span>
+            </div>
+            <h3 class="pub-title">Assessment of Wildfire-Induced Changes in Energy Fluxes and Environmental Variables: A Case Study in the Similipal Forest Reserve, Odisha, India</h3>
+            <p class="pub-authors"><strong>M. S. Shyam Sunder</strong>, Bhishma Tyagi</p>
+            <div class="pub-actions">
+              <a class="pub-action-btn" href="https://doi.org/10.5194/egusphere-egu24-106" target="_blank" rel="noopener">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                DOI: 10.5194/egusphere-egu24-106
+              </a>
+            </div>
+          </article>
+
           <!-- Pipeline -->
           <article class="pub-item" data-kind="pipeline">
             <div class="pub-top-meta">
@@ -709,7 +763,7 @@
             </div>
             <h3 class="pub-title">Forecasting & Physical Diagnostics Pipeline</h3>
             <p class="pub-authors">
-              PACI-ICPDA extreme wildfire forecasting; LSTM + Quantum Reservoir Fire-Weather dynamics; Physics-guided thunderstorm prediction; Fire-driven carbon-pool recovery trajectories; South Asian High / ISMR teleconnections with Explainable AI.
+              PACI-ICPDA extreme wildfire forecasting; LSTM + Quantum Reservoir Fire-Weather dynamics; Physics-guided thunderstorm prediction; Fire-driven carbon-pool recovery trajectories.
             </p>
           </article>
         </div>
@@ -981,6 +1035,8 @@
   <!-- Interactive 3D Engines & App Logic -->
   <script src="js/earth3d.js"></script>
   <script src="js/quantum3d.js"></script>
+  <script src="js/details.js"></script>
+  <script src="js/scraper.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
